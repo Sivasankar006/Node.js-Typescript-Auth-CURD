@@ -2,12 +2,6 @@ import { Request, Response } from 'express';
 import { Auth, hashPassword, verifyToken } from '../models/Auth';
 
 
-interface AuthRequest extends Request {
-    user?: any;
-    token?: string;
-    _id?: any;
-}
-
 // User registration
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -91,7 +85,7 @@ export const getUser = async (req: Request, res: Response) => {
 // You are pass the header authtoken this user token pass is success other wise faild
 
 // Start
-export const getUserId = async (req: AuthRequest, res: Response) => {
+export const getUserId = async (req: Request, res: Response) => {
     try {
 
         const token = req.header('Authorization')?.replace('Bearer ', '');
@@ -124,7 +118,7 @@ export const getUserId = async (req: AuthRequest, res: Response) => {
 
 
 // Update user
-export const updateUser = async (req: AuthRequest, res: Response) => {
+export const updateUser = async (req: Request, res: Response) => {
     try {
         const userId = req.params.id;
 
