@@ -6,6 +6,7 @@ import { Auth } from '../models/Auth';
 interface AuthRequest extends Request {
   user?: any;
   token?: string; 
+  _id?: any;
 }
 
 export const authMiddleware = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
